@@ -10,7 +10,7 @@ const BroadcastDispatcher = require('../dispatcher/BroadcastDispatcher');
  */
 class AudioPlayer extends BasePlayer {
   constructor(broadcast) {
-    super();
+    super(1);
     /**
      * The broadcast that the player serves
      * @type {VoiceBroadcast}
@@ -19,7 +19,7 @@ class AudioPlayer extends BasePlayer {
   }
 
   createDispatcher(options, streams) {
-    this.destroyDispatcher();
+    this.destroyDispatcher(1);
     const dispatcher = (this.dispatcher = new BroadcastDispatcher(this, options, streams));
     return dispatcher;
   }

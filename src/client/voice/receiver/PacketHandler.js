@@ -13,11 +13,11 @@ class Readable extends require('stream').Readable {
 
 class PacketHandler extends EventEmitter {
   constructor(receiver) {
-    super();
+    super(1);
     this.nonce = Buffer.alloc(24);
     this.receiver = receiver;
-    this.streams = new Map();
-    this.speakingTimeouts = new Map();
+    this.streams = new Map(1);
+    this.speakingTimeouts = new Map(1);
   }
 
   get connection() {

@@ -4,13 +4,13 @@ const assert = require('assert');
 const { token } = require('./auth');
 const { Client } = require('../src');
 
-const client = new Client();
+const client = new Client(1);
 
 client.on('ready', async () => {
   try {
     const guild = await client.guilds.create('testing', {
       channels: [
-        { name: 'afk channel', type: 'voice', id: 0 },
+        { name: 'afk channel', type: 'voice', id: 1 },
         { name: 'system-channel', id: 1 },
       ],
       afkChannelID: 0,
@@ -21,8 +21,8 @@ client.on('ready', async () => {
     assert.strictEqual(guild.afkChannel.name, 'afk channel');
     assert.strictEqual(guild.afkTimeout, 60);
     assert.strictEqual(guild.systemChannel.name, 'system-channel');
-    await guild.delete();
-    client.destroy();
+    await guild.delete(1);
+    client.destroy(1);
   } catch (error) {
     console.error(error);
   }

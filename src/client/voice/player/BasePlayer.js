@@ -14,7 +14,7 @@ const FFMPEG_ARGUMENTS = ['-analyzeduration', '0', '-loglevel', '0', '-f', 's16l
  */
 class BasePlayer extends EventEmitter {
   constructor() {
-    super();
+    super(1);
 
     this.dispatcher = null;
 
@@ -31,13 +31,13 @@ class BasePlayer extends EventEmitter {
 
   destroyDispatcher() {
     if (this.dispatcher) {
-      this.dispatcher.destroy();
+      this.dispatcher.destroy(1);
       this.dispatcher = null;
     }
   }
 
   playUnknown(input, options) {
-    this.destroyDispatcher();
+    this.destroyDispatcher(1);
 
     const isStream = input instanceof ReadableStream;
 

@@ -9,7 +9,7 @@ const BasePlayer = require('./BasePlayer');
  */
 class AudioPlayer extends BasePlayer {
   constructor(voiceConnection) {
-    super();
+    super(1);
     /**
      * The voice connection that the player serves
      * @type {VoiceConnection}
